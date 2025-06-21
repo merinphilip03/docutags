@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/table.css' %}">
+    <script src="{% static 'js/anish.js' %}"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="searchPanel">
+            <form method="get" class="search">
+                <input type="text" name="q" placeholder="Please enter a tag to find documents." value="{{ query }}" class="searchBar">
+                <button type="submit" class="searchButton">Search</button>
+                <a href="{% url 'upload_doc' %}" class="new">NEW</a>
+            </form>
+        </div>
+        <div class="tablePanel">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Document</th>
+                        <th>Owner</th>
+                        <th>Uploaded_Date</th>
+                        <th>Department</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for doc in page_obj %}
+                    <tr onclick="handleClickRow({tags : '{{ doc.tags|escapejs }}', subject : '{{ doc.subject|escapejs }}', description : '{{ doc.description|escapejs }}', image : '{{ doc.image.url|escapejs }}' })"
+                        class="row-{{doc.id}}">
+                        <td>{{ doc.title }}</td>
+                        <td><a href="{{ doc.image.url }}">{{ doc.image }}</a></td>
+                        <td>{{ doc.owner }}</td>
+                        <td>{{ doc.upload_at }}</td>
+                        <td>{{ doc.department }}</td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="5" style="text-align: center;"></td>
+                        {% if query %}
+                        <p>No documents found matching the tag "{{ query }}".</p>
+                        {% endif %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <div class="pagination-con">
+                {% if page_obj.has_other_pages %}
+                    <ul class="pagination">
+                        {% if page_obj.has_previous %}
+                            <li class=" page-item"><a class="page-link" href="?page=1&q={{ query }}"><<</a></li>
+                            <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}&q={{ query }}"><</a></li>
+                        {% else %}
+                            <li class="page-item disabled"><span class="page-link"><<</span></li>
+                            <li class="page-item disabled"><span class="page-link"><</span></li>
+                        {% endif %}
+                        {% for i in page_obj.paginator.get_elided_page_range %}
+                            {% if page_obj.number == i %}
+                                <li class="page-item active"><span class="page-link">{{ i }}</span></li>
+                            {% elif i == page_obj.paginator.ELLIPSIS %}
+                                <li class="page-item"><span class="page-link">{{ i }}</span></li>
+                            {% else %}
+                                <li class="page-item"><a class="page-link" href="?page={{ i }}&q={{ query }}">{{ i }}</a></li>
+                            {% endif %}
+                        {% endfor %}
+                        {% if page_obj.has_next %}
+                            <li class="page-item"><a class="page-link"
+                                    href="?page={{ page_obj.next_page_number }}&q={{ query }}">></a></li>
+                            <li class="page-item"><a class="page-link"
+                                    href="?page={{ page_obj.paginator.num_pages }}&q={{ query }}">>></a></li>
+                        {% else %}
+                            <li class="page-item disabled"><span class="page-link">></span></li>
+                            <li class="page-item disabled"><span class="page-link">>></span></li>
+                        {% endif %}
+                    </ul>
+                {% endif %}
+            </div>
+            <div class="info">
+                <div class="image" style="text-align: center;">
+                    
+                </div>
+                <h2 style="margin-left: 50px;">Tags:</h2>
+                <div class="tags-container">
+
+                </div>
+                <h2 style="margin-left: 50px;">Subject:</h2>
+                <div class="subject-container">
+                    
+                </div>
+                <h2 style="margin-left: 50px;">Description:</h2>
+                <div class="desription-container">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

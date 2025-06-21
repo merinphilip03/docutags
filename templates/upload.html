@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Upload</title>
+        <link rel="stylesheet" href="{% static 'css/upload.css' %}">
+        <style>
+            .back {
+                padding: 15px;
+                background-color: rgb(137, 137, 157);
+                color: white;
+                text-decoration: none;
+                border-radius: 8px;
+                font-size: 16px;
+                margin-left: 400px;
+                transition: background-color 0.3s;
+                display: inline-block;
+                border: 2px solid #595656;
+            }
+
+            .back:hover {
+                background-color: rgb(179, 174, 174);
+            }
+        </style>
+    </head>
+
+    <body>
+        <h2>Upload Document</h2>
+        <div class="upload">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Upload</button>
+                <a href="{% url 'table_doc' %}" class="back">SEARCH</a>
+            </form>
+        </div>
+    </body>
+
+</html>

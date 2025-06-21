@@ -1,0 +1,22 @@
+# Python compiled files
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Django database file
+db.sqlite3
+
+# Environment settings (secrets)
+.env
+
+# Static & media files (often generated automatically)
+static/
+media/
+
+# IDE/editor files
+.vscode/
+*.swp
+
+# OS files
+.DS_Store
+Thumbs.db
