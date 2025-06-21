@@ -23,12 +23,15 @@ button {
     cursor: pointer;
     border-radius: 8px;
     background-color: rgb(137, 137, 157);
-    color: black;
-    height: 30px;
-    width: 60px;
+    color: white;
+    height: 50px;
+    width: 80px;
     margin: 15px;
     margin-left: 70px;
     padding: 15px;
+    transition: background-color 0.3s;
+    font-size: 16px;
+    border: 2px solid #595656;
 }
 
 button:hover {
@@ -47,4 +50,21 @@ input[type="file"] {
 
 textarea {
     resize: vertical;
+}
+
+.back {
+    padding: 15px;
+    background-color: rgb(137, 137, 157);
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 16px;
+    margin-left: 400px;
+    transition: background-color 0.3s;
+    display: inline-block;
+    border: 2px solid #595656;
+}
+
+.back:hover {
+    background-color: rgb(179, 174, 174);
 }

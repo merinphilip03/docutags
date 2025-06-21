@@ -90,6 +90,15 @@ tr:hover {
 .info {
     display: none;
     margin-top: 30px;
+    position: absolute;
+    left: 70px;
+    top: 50px;
+    height: 500px;
+    width: 900px;
+    background-color: silver;
+    overflow: scroll;
+    border: 1px solid #5b806b;
+    z-index: 999;
 }
 
 .tags-container,
@@ -150,4 +159,19 @@ image {
 
 .new:hover {
     background-color: #8bad9a;
+}
+
+.close{
+    padding: 8px;
+    background-color: #b42929;
+    color: rgb(10, 10, 10);
+    text-decoration: none;
+    border-radius: 2px;
+    font-size: 16px;
+    margin-top: 6px;
+    margin-left: 850px;
+    transition: background-color 0.3s;
+    display: inline-block;
+    border: 2px solid #595656;
+    z-index: 1000;
 }

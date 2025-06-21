@@ -1,3 +1,18 @@
+document.addEventListener('DOMContentLoaded', () => {
+    const closeBtn = document.querySelector('.close');
+    const infoBox = document.querySelector('.info');
+    console.log(closeBtn);
+    console.log(infoBox);
+
+    if (closeBtn && infoBox) {
+        closeBtn.addEventListener('click', function (event) {
+            console.log("fdsf");
+
+            infoBox.style.display = 'none';
+        });
+    }
+});
+
 function handleClickRow(data) {
     console.log(data);
     let info = document.querySelector('.info');
@@ -29,7 +44,7 @@ function handleClickRow(data) {
     // console.log(data.subject)
     console.log(data.description)
     let subjectContainer = document.querySelector('.subject-container');
-    subjectContainer.innerHTML =  data.subject;
+    subjectContainer.innerHTML = data.subject;
     let desContainer = document.querySelector('.desription-container');
     desContainer.innerHTML = data.description;
 }

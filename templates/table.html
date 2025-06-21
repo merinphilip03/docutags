@@ -14,7 +14,8 @@
     <div class="container">
         <div class="searchPanel">
             <form method="get" class="search">
-                <input type="text" name="q" placeholder="Please enter a tag to find documents." value="{{ query }}" class="searchBar">
+                <input type="text" name="q" placeholder="Please enter a tag to find documents." value="{{ query }}"
+                    class="searchBar">
                 <button type="submit" class="searchButton">Search</button>
                 <a href="{% url 'upload_doc' %}" class="new">NEW</a>
             </form>
@@ -52,38 +53,39 @@
             </table>
             <div class="pagination-con">
                 {% if page_obj.has_other_pages %}
-                    <ul class="pagination">
-                        {% if page_obj.has_previous %}
-                            <li class=" page-item"><a class="page-link" href="?page=1&q={{ query }}"><<</a></li>
-                            <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}&q={{ query }}"><</a></li>
-                        {% else %}
-                            <li class="page-item disabled"><span class="page-link"><<</span></li>
-                            <li class="page-item disabled"><span class="page-link"><</span></li>
-                        {% endif %}
-                        {% for i in page_obj.paginator.get_elided_page_range %}
-                            {% if page_obj.number == i %}
-                                <li class="page-item active"><span class="page-link">{{ i }}</span></li>
-                            {% elif i == page_obj.paginator.ELLIPSIS %}
-                                <li class="page-item"><span class="page-link">{{ i }}</span></li>
-                            {% else %}
-                                <li class="page-item"><a class="page-link" href="?page={{ i }}&q={{ query }}">{{ i }}</a></li>
-                            {% endif %}
-                        {% endfor %}
-                        {% if page_obj.has_next %}
-                            <li class="page-item"><a class="page-link"
-                                    href="?page={{ page_obj.next_page_number }}&q={{ query }}">></a></li>
-                            <li class="page-item"><a class="page-link"
-                                    href="?page={{ page_obj.paginator.num_pages }}&q={{ query }}">>></a></li>
-                        {% else %}
-                            <li class="page-item disabled"><span class="page-link">></span></li>
-                            <li class="page-item disabled"><span class="page-link">>></span></li>
-                        {% endif %}
-                    </ul>
+                <ul class="pagination">
+                    {% if page_obj.has_previous %}
+                    <li class=" page-item"><a class="page-link" href="?page=1&q={{ query }}"><<</a></li>
+                    <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}&q={{ query }}"><</a></li>
+                    {% else %}
+                    <li class="page-item disabled"><span class="page-link"><<</span></li>
+                    <li class="page-item disabled"><span class="page-link"><</span></li>
+                    {% endif %}
+                    {% for i in page_obj.paginator.get_elided_page_range %}
+                    {% if page_obj.number == i %}
+                    <li class="page-item active"><span class="page-link">{{ i }}</span></li>
+                    {% elif i == page_obj.paginator.ELLIPSIS %}
+                    <li class="page-item"><span class="page-link">{{ i }}</span></li>
+                    {% else %}
+                    <li class="page-item"><a class="page-link" href="?page={{ i }}&q={{ query }}">{{ i }}</a></li>
+                    {% endif %}
+                    {% endfor %}
+                    {% if page_obj.has_next %}
+                    <li class="page-item"><a class="page-link"
+                            href="?page={{ page_obj.next_page_number }}&q={{ query }}">></a></li>
+                    <li class="page-item"><a class="page-link"
+                            href="?page={{ page_obj.paginator.num_pages }}&q={{ query }}">>></a></li>
+                    {% else %}
+                    <li class="page-item disabled"><span class="page-link">></span></li>
+                    <li class="page-item disabled"><span class="page-link">>></span></li>
+                    {% endif %}
+                </ul>
                 {% endif %}
             </div>
             <div class="info">
+                <button class="close">X</button>
                 <div class="image" style="text-align: center;">
-                    
+
                 </div>
                 <h2 style="margin-left: 50px;">Tags:</h2>
                 <div class="tags-container">
@@ -91,11 +93,11 @@
                 </div>
                 <h2 style="margin-left: 50px;">Subject:</h2>
                 <div class="subject-container">
-                    
+
                 </div>
                 <h2 style="margin-left: 50px;">Description:</h2>
                 <div class="desription-container">
-                    
+
                 </div>
             </div>
         </div>
